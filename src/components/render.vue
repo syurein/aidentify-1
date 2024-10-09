@@ -95,11 +95,11 @@ const getClickPosition = (event) => {
 <template>
 
   <div class="select" v-show="view.editText">
-    <div class="space fixed z-100 border-dashed border-2 border-[#ffffffaa] w-5 h-5 shadow-2xl shadow-black shadow-inner"
+    <div class="space fixed z-100 border-dashed border-2 border-[#ffffffaa] w-5 h-5 shadow-2xl shadow-black"
       :style="space"></div>
-    <div class="point1 fixed z-100 rounded-full w-5 h-5 bg-[#ffffff] shadow-2xl shadow-black shadow-inner"
+    <div class="point1 fixed z-100 rounded-full w-5 h-5 bg-[#ffffff] shadow-2xl shadow-black"
       :style="point1Style"></div>
-    <div class="point2 fixed z-100 rounded-full w-5 h-5 bg-[#ffffff] shadow-2xl shadow-black shadow-inner"
+    <div class="point2 fixed z-100 rounded-full w-5 h-5 bg-[#ffffff] shadow-2xl shadow-black"
       :style="point2Style"></div>
     <img v-if="imageUrl" :src="imageUrl" alt="アップロードされた画像" class="w-[100vw]" @click="getClickPosition">
     <p class="text-[#ffffff99] text-center">{{ xPos }},{{ yPos }}</p>
