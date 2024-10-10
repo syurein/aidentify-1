@@ -32,6 +32,8 @@ const uploadImage = () => {
   formData.append('image', image.data);
   formData.append('risk_level', select.data);
 
+  //alert(coordinate.state)
+
   if (coordinate.state == "special-lama") {
     //alert("special-lama")
     formData.append('x1', parseInt(coordinate.data.point1.xPos))
@@ -55,7 +57,7 @@ const uploadImage = () => {
         console.error(error);
         router.push("result")
       });
-  } else {
+  } else if(coordinate.state == "simple-lama"){
     //alert("simple-lama")
     axios.post(`https://wired-kitten-adequately.ngrok-free.app/create-mask-and-inpaint-simple-lama`, formData, {
       responseType: 'blob',

@@ -11,6 +11,10 @@
   white-space: nowrap;
 }
 
+*{
+  font-family: Inter, "Noto Sans JP", serif;
+}
+
 .fadeUp {
   animation-name: fadeUpAnime;
   animation-duration: 0.5s;
