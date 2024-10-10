@@ -26,12 +26,12 @@ const view = computed(() => store.viewpinia)
       </div>
     </div>
     <div class="fixed top-0 left-0 w-screen z-10" v-show="!view.editText">
-      <div class="mt-20 relative">
+      <div class="mt-20 relative" v-show="false">
         <Manuel class="mx-auto w-[92vw]" />
       </div>
     </div>
 
-    <div class="fixed bottom-0 left-0 bg-gradient-to-t from-black via-[#00000055]/70" v-show="!view.editText">
+    <div class="fixed bottom-0 left-0 bg-gradient-to-t from-black via-[#00000055]/70 z-40" v-show="!view.editText">
       <div class="relative block w-[100vw]">
         <div class="mb-2 mt-10">
           <Infobar />
@@ -47,7 +47,7 @@ const view = computed(() => store.viewpinia)
     </div>
 
     <Transition>
-      <div class="fixed bottom-16 left-0" v-show="view.editTab || view.editPaint || view.editText">
+      <div class="fixed bottom-16 left-0 z-50" v-show="view.editTab || view.editPaint || view.editText">
         <div class="relative block w-[100vw] left-0">
           <EditUI />
         </div>

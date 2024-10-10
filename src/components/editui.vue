@@ -33,9 +33,9 @@ const close = () => {
       <Transition>
         <div v-show="view.editText">
           <div class="fixed top-0 right-0 w-full flex z-100">
-            <div class="rounded-3xl bg-[#ffffff20] p-2 flex ml-auto mt-20 w-60">
+            <div class="rounded-3xl bg-neutral-800 p-2 flex ml-auto mt-20 w-60 border border-neutral-700">
               <button
-                class="rounded-full bg-[#ffffff30] p-2 rotate-0 transition-transform duration-300 hover:rotate-180"><img
+                class="rounded-full bg-[#ffffff20] p-2 rotate-0 transition-transform duration-300 hover:rotate-180"><img
                   src="@/assets/images/reload.svg" class="invert"></button>
               <p class="my-auto px-3 ">加工範囲を選択中...</p>
             </div>
@@ -45,7 +45,7 @@ const close = () => {
           </div>
 
           <div class="fixed bottom-0 right-0 w-full z-100">
-            <button class="w-60 bg-[#ffffff30] px-5 py-3 font-bold text-md text-white rounded-xl mb-12 mx-auto block"
+            <button class="w-60 bg-neutral-800 border-neutral-700 px-5 py-3 font-bold text-md text-white rounded-xl mb-12 mx-auto block"
               @click="store.router('editPaint');">完了</button>
           </div>
         </div>
@@ -53,7 +53,7 @@ const close = () => {
 
       <div v-show="view.editPaint" class="w-full">
         <div
-          class="bg-[#FFFFFF1E] backdrop-blur-md rounded-3xl border border-1 border-stone-600 p-1 w-30 relative w-full">
+          class="bg-neutral-800 backdrop-blur-md rounded-3xl border border-1 border-stone-600 p-1 w-30 relative w-full">
           <div class="flex">
             <p class="text-sm mx-3 mt-3 mb-4 font-bold text-stone-400">削除ボリューム {{ rotate }}</p>
             <button class="ml-auto invert"><img src="@/assets/images/x-circle.svg" class="w-6 h-6 mr-3 mb-1"

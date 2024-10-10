@@ -37,7 +37,7 @@ if(view.editPaint){
 </script>
 
 <template>
-  <div class="bg-[#FFFFFF1E] backdrop-blur-md rounded-3xl p-1 border border-1 border-stone-600 w-30 relative w-16 h-32 flex flex-col-reverse gap-y-2">
+  <div class="bg-neutral-800 backdrop-blur-md rounded-3xl p-1 border border-1 border-stone-600 w-30 relative w-16 h-32 flex flex-col-reverse gap-y-2">
 
     <button :class="bucketClass" @click="bucket">
       <img src="@/assets/images/bucket.svg" class="mx-auto w-6 h-6"></button>
