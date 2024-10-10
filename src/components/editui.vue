@@ -37,7 +37,7 @@ const close = () => {
               <button
                 class="rounded-full bg-[#ffffff20] p-2 rotate-0 transition-transform duration-300 hover:rotate-180"><img
                   src="@/assets/images/reload.svg" class="invert"></button>
-              <p class="my-auto px-3 ">加工範囲を選択中...</p>
+              <p class="my-auto px-3 text-[#ffffffaa]">加工範囲を選択中...</p>
             </div>
 
             <button class="mt-20 ml-4 mr-auto opacity-80" @click="store.router('editPaint');"><img

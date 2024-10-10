@@ -7,7 +7,7 @@ console.log(store.viewpinia)
 <template>
   <div class="relative block">
     <h2 class="text-2xl font-bold text-center text-white">AIで個人情報を隠す</h2>
-    <div class="mt-2 text-sm text-center">
+    <div class="mt-2 text-sm text-center text-[#ffffffee]">
       <p>画像から個人情報を削除して</p>
       <p>安心なインターネットライフを！</p>
     </div>
