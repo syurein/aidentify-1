@@ -20,6 +20,7 @@ export default defineConfig({
         display: 'standalone',
         scope: '/',
         start_url: '/',
+        purpose: 'maskable',
         icons: [
           {
             src: '/pwa-192x192.png',
