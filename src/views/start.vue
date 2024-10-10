@@ -68,8 +68,8 @@ if (historys) {
 
     <Transition>
       <div v-show="!history">
-        <img src="@/assets/images/logo.png"
-          class="w-28 fixed top-[40vh] left-[50vw] translate-x-[-50%] translate-y-[-50%]" v-if="!view.uploadimage">
+        <img src="@/assets/images/logo2.png"
+          class="w-52 fixed top-[40vh] left-[50vw] translate-x-[-50%] translate-y-[-50%]" v-if="!view.uploadimage">
         <div class="fixed bottom-12 left-1/2 translate-x-[-50%]" v-if="!view.uploadimage">
           <Title />
         </div>
