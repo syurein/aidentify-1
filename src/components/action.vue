@@ -32,14 +32,14 @@ const uploadImage = () => {
   formData.append('image', image.data);
   formData.append('risk_level', select.data);
 
-  console.log("x1:" + coordinate.data.point1.xPos + "y1:" + coordinate.data.point1.yPos + "x2:" + coordinate.data.point2.xPos + "y2:" + coordinate.data.point2.yPos)
-
-  if (!isNaN(coordinate.data.point1.xPos)) {
-    alert("special-lama")
+  if (coordinate.state == "special-lama") {
+    //alert("special-lama")
     formData.append('x1', parseInt(coordinate.data.point1.xPos))
     formData.append('y1', parseInt(coordinate.data.point1.yPos))
     formData.append('x2', parseInt(coordinate.data.point2.xPos))
     formData.append('y2', parseInt(coordinate.data.point2.yPos))
+
+    console.log("x1:" + coordinate.data.point1.xPos + "y1:" + coordinate.data.point1.yPos + "x2:" + coordinate.data.point2.xPos + "y2:" + coordinate.data.point2.yPos)
 
     axios.post(`https://wired-kitten-adequately.ngrok-free.app/create-mask-and-inpaint-simple-lama-special`, formData, {
       responseType: 'blob',
@@ -56,7 +56,7 @@ const uploadImage = () => {
         router.push("result")
       });
   } else {
-    alert("simple-lama")
+    //alert("simple-lama")
     axios.post(`https://wired-kitten-adequately.ngrok-free.app/create-mask-and-inpaint-simple-lama`, formData, {
       responseType: 'blob',
       headers: {

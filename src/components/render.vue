@@ -70,6 +70,7 @@ const getClickPosition = (event) => {
     let height = yPos.value - beforeYpos.value
 
     coordinate.data = {"point1": {"xPos": beforeXpos, "yPos": beforeYpos}, "point2": {"xPos": xPos, "yPos": yPos}}
+    coordinate.state = "special-lama"
 
     if (width < 0 && height < 0) {
       console.log("2")
