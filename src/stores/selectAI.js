@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useSelectAIStore = defineStore('selectAI', () => {
 
-  const data = ref(10)
+  const data = ref(50)
 
   return { data }
 })
