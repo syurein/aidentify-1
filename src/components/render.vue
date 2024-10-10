@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useImageStore } from '@/stores/image.js'
 const image = useImageStore()
 
@@ -13,6 +13,24 @@ import { useCoordinateStore } from '@/stores/coordinate.js'
 const coordinate = useCoordinateStore()
 
 const imageUrl = ref(null);
+
+const uploadedImage = ref(null) // refで画像要素を参照
+
+
+// 画像の幅と高さを取得する関数
+const getImageDimensions = () => {
+  if (uploadedImage.value) {
+    const width = uploadedImage.value.clientWidth
+    const height = uploadedImage.value.clientHeight
+
+    return {width: width,height: height}
+  }
+}
+
+// 画像が表示されたら（DOMにマウントされたら）幅と高さを取得
+onMounted(() => {
+  getImageDimensions()
+})
 
 const file = image.data
 
@@ -36,6 +54,10 @@ const space = ref({ left: '0px', top: '0px', width: '0px', height: '0px' })
 const point1 = ref(true)
 
 const getClickPosition = (event) => {
+
+  coordinate.width = getImageDimensions().width
+  coordinate.height = getImageDimensions().height
+
   const image = event.target
   const rect = image.getBoundingClientRect()  // 画像の位置とサイズを取得
 
@@ -102,7 +124,7 @@ const getClickPosition = (event) => {
       :style="point1Style"></div>
     <div class="point2 fixed z-100 rounded-full w-5 h-5 bg-[#ffffff] shadow-2xl shadow-black"
       :style="point2Style"></div>
-    <img v-if="imageUrl" :src="imageUrl" alt="アップロードされた画像" class="w-[100vw]" @click="getClickPosition">
+    <img v-if="imageUrl" :src="imageUrl" alt="アップロードされた画像" class="w-[100vw]" @click="getClickPosition" ref="uploadedImage">
     <p class="text-[#ffffff99] text-center">{{ xPos }},{{ yPos }}</p>
   </div>
 

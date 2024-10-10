@@ -36,12 +36,12 @@ const uploadImage = () => {
 
   if (coordinate.state == "special-lama") {
     //alert("special-lama")
-    formData.append('x1', parseInt(coordinate.data.point1.xPos))
-    formData.append('y1', parseInt(coordinate.data.point1.yPos))
-    formData.append('x2', parseInt(coordinate.data.point2.xPos))
-    formData.append('y2', parseInt(coordinate.data.point2.yPos))
+    formData.append('x1', parseFloat(coordinate.data.point1.xPos / coordinate.width))
+    formData.append('y1', parseFloat(coordinate.data.point1.yPos / coordinate.height))
+    formData.append('x2', parseFloat(coordinate.data.point2.xPos / coordinate.width))
+    formData.append('y2', parseFloat(coordinate.data.point2.yPos / coordinate.height))
 
-    console.log("x1:" + coordinate.data.point1.xPos + "y1:" + coordinate.data.point1.yPos + "x2:" + coordinate.data.point2.xPos + "y2:" + coordinate.data.point2.yPos)
+    console.log("x1:" + coordinate.data.point1.xPos / coordinate.width + "y1:" + coordinate.data.point1.yPos / coordinate.height + "x2:" + coordinate.data.point2.xPos / coordinate.width + "y2:" + coordinate.data.point2.yPos / coordinate.height)
 
     axios.post(`https://wired-kitten-adequately.ngrok-free.app/create-mask-and-inpaint-simple-lama-special`, formData, {
       responseType: 'blob',
