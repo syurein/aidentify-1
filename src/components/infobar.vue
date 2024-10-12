@@ -11,6 +11,9 @@ const classifyStore = useClassifyStore()
 import { useImageStore } from '@/stores/image.js' // imageストア用
 const image = useImageStore()
 
+import { useUrlStore } from '@/stores/url.js'
+const url = useUrlStore()
+
 //store.router("loading")
 
 const data = ref("wait...")
@@ -20,7 +23,7 @@ const formData = new FormData();
 
   console.log("hello")
 
-axios.post(`https://wired-kitten-adequately.ngrok-free.app/classify-image/`, formData, {
+axios.post(`${url.data}/classify-image/`, formData, {
   headers: {
     'Content-Type': 'multipart/form-data'
   }

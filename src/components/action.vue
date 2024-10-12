@@ -7,12 +7,14 @@ import { useImageStore } from '@/stores/image.js' // imageストア用
 import { useSelectAIStore } from '@/stores/selectAI.js' // selectAIストア用
 import { useResultStore } from '@/stores/result.js' // resultストア用
 import { useCoordinateStore } from '@/stores/coordinate.js'
+import { useUrlStore } from '@/stores/url.js'
 
 const store = useViewControlStore()
 const image = useImageStore()
 const select = useSelectAIStore()
 const result = useResultStore()
 const coordinate = useCoordinateStore()
+const url = useUrlStore()
 
 console.log(store.viewpinia)
 
@@ -34,46 +36,28 @@ const uploadImage = () => {
 
   //alert(coordinate.state)
 
-  if (coordinate.state == "special-lama") {
-    //alert("special-lama")
-    formData.append('x1', parseFloat(coordinate.data.point1.xPos / coordinate.width))
-    formData.append('y1', parseFloat(coordinate.data.point1.yPos / coordinate.height))
-    formData.append('x2', parseFloat(coordinate.data.point2.xPos / coordinate.width))
-    formData.append('y2', parseFloat(coordinate.data.point2.yPos / coordinate.height))
+  //alert("special-lama")
+  formData.append('x1', parseFloat(coordinate.data.point1.xPos / coordinate.width))
+  formData.append('y1', parseFloat(coordinate.data.point1.yPos / coordinate.height))
+  formData.append('x2', parseFloat(coordinate.data.point2.xPos / coordinate.width))
+  formData.append('y2', parseFloat(coordinate.data.point2.yPos / coordinate.height))
 
-    console.log("x1:" + coordinate.data.point1.xPos / coordinate.width + "y1:" + coordinate.data.point1.yPos / coordinate.height + "x2:" + coordinate.data.point2.xPos / coordinate.width + "y2:" + coordinate.data.point2.yPos / coordinate.height)
+  console.log("x1:" + coordinate.data.point1.xPos / coordinate.width + "y1:" + coordinate.data.point1.yPos / coordinate.height + "x2:" + coordinate.data.point2.xPos / coordinate.width + "y2:" + coordinate.data.point2.yPos / coordinate.height)
 
-    axios.post(`https://wired-kitten-adequately.ngrok-free.app/create-mask-and-inpaint-simple-lama-special`, formData, {
-      responseType: 'blob',
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+  axios.post(`${url.data}/create-mask-and-inpaint-sum`, formData, {
+    responseType: 'blob',
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+    .then(response => {
+      result.data = response.data
+      router.push("result");
     })
-      .then(response => {
-        result.data = response.data
-        router.push("result");
-      })
-      .catch(error => {
-        console.error(error);
-        router.push("result")
-      });
-  } else if(coordinate.state == "simple-lama"){
-    //alert("simple-lama")
-    axios.post(`https://wired-kitten-adequately.ngrok-free.app/create-mask-and-inpaint-simple-lama`, formData, {
-      responseType: 'blob',
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-      .then(response => {
-        result.data = response.data
-        router.push("result");
-      })
-      .catch(error => {
-        console.error(error);
-        router.push("result")
-      });
-  }
+    .catch(error => {
+      console.error(error);
+      router.push("result")
+    });
   //formData.append('point2', ["444","200"])
 
 
