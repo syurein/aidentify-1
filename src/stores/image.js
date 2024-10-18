@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 export const useImageStore = defineStore('image', () => {
 
   const data = ref({})
+  const takedata = ref({})
 
-  return { data }
+  return { data, takedata }
 })

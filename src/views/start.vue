@@ -3,6 +3,7 @@ import { ref, computed } from "vue"
 import Title from "@/components/title.vue"
 import Upload from "@/components/upload.vue"
 import Background from "@/components/background.vue"
+import Videocamera from '@/components/videocamera.vue';
 
 import { useViewControlStore } from '@/stores/viewcontrol.js'
 const store = useViewControlStore()
@@ -34,6 +35,9 @@ if (historys) {
 
 <template>
   <div>
+    <div v-if="view.take" class="position fixed top-0 left-0" style="z-index:100">
+    <Videocamera />
+    </div>
 
     <div class="w-screen h-screen position fixed z-0 top-0 left-0">
       <Background />

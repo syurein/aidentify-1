@@ -31,18 +31,64 @@ const uploadImage = () => {
   //const point2 = [parseInt(444, 10), parseInt(200, 10)];
 
 
-  formData.append('image', image.data);
+  const base64Data = image.data
+  const fileData = base64Data.replace(/^data:\w+\/\w+;base64,/, '');
+  const byteString = atob(fileData);
+  const arrayBuffer = new ArrayBuffer(byteString.length);
+  const uint8Array = new Uint8Array(arrayBuffer);
+  for (let i = 0; i < byteString.length; i++) {
+    uint8Array[i] = byteString.charCodeAt(i);
+  }
+  const file = new File([uint8Array], 'fileName.jpg', { type: "image/jpg" });
+
+  formData.append('image', file);
   formData.append('risk_level', select.data);
 
   //alert(coordinate.state)
 
   //alert("special-lama")
+  /*if (coordinate.state == 'special-lama') {
+    formData.append('x1', parseFloat(coordinate.data.point1.xPos / coordinate.width))
+    formData.append('y1', parseFloat(coordinate.data.point1.yPos / coordinate.height))
+    formData.append('x2', parseFloat(coordinate.data.point2.xPos / coordinate.width))
+    formData.append('y2', parseFloat(coordinate.data.point2.yPos / coordinate.height))
+
+    console.log("x1:" + coordinate.data.point1.xPos / coordinate.width + "y1:" + coordinate.data.point1.yPos / coordinate.height + "x2:" + coordinate.data.point2.xPos / coordinate.width + "y2:" + coordinate.data.point2.yPos / coordinate.height)
+    axios.post(`${url.data}/create-mask-and-inpaint-simple-lama-special`, formData, {
+      responseType: 'blob',
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+      .then(response => {
+        result.data = response.data
+        router.push("result");
+      })
+      .catch(error => {
+        console.error(error);
+        router.push("result")
+      });
+  } else {
+    axios.post(`${url.data}/create-mask-and-inpaint-simple-lama-special`, formData, {
+      responseType: 'blob',
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+      .then(response => {
+        result.data = response.data
+        router.push("result");
+      })
+      .catch(error => {
+        console.error(error);
+        router.push("result")
+      });
+  }*/
+
   formData.append('x1', parseFloat(coordinate.data.point1.xPos / coordinate.width))
   formData.append('y1', parseFloat(coordinate.data.point1.yPos / coordinate.height))
   formData.append('x2', parseFloat(coordinate.data.point2.xPos / coordinate.width))
   formData.append('y2', parseFloat(coordinate.data.point2.yPos / coordinate.height))
-
-  console.log("x1:" + coordinate.data.point1.xPos / coordinate.width + "y1:" + coordinate.data.point1.yPos / coordinate.height + "x2:" + coordinate.data.point2.xPos / coordinate.width + "y2:" + coordinate.data.point2.yPos / coordinate.height)
 
   axios.post(`${url.data}/create-mask-and-inpaint-sum`, formData, {
     responseType: 'blob',
@@ -58,6 +104,10 @@ const uploadImage = () => {
       console.error(error);
       router.push("result")
     });
+
+
+
+
   //formData.append('point2', ["444","200"])
 
 

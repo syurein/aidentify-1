@@ -5,6 +5,7 @@ export const useViewControlStore = defineStore('counter', () => {
   const views = {
     "title": false,
     "uploadimage": false,
+    "take": false,
     "edit": false,
     "editTab": false,
     "editPaint": false,

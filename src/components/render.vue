@@ -35,11 +35,13 @@ onMounted(() => {
 const file = image.data
 
 // FileReader API を使って画像データを base64 文字列に変換
-const reader = new FileReader();
+/*const reader = new FileReader();
 reader.readAsDataURL(file);
 reader.onload = () => {
-  imageUrl.value = reader.result;
-};
+  imageUrl.value = image.data
+};*/
+
+imageUrl.value = image.data
 
 const xPos = ref(0)
 const yPos = ref(0)
