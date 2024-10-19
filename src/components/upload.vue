@@ -48,11 +48,11 @@ const upload = (event) => {
         class="relative left-[50%] translate-x-[-50%] rounded-xl bg-indigo-400 text-xl px-5 py-4 font-bold bg-indigo-500 text-white w-[80vw]">Upload
         image</button>
     </div>
-    <div class="mt-4">
+    <!--<div class="mt-4">
       <button @click="store.router('take')"
         class="relative left-[50%] translate-x-[-50%] rounded-xl bg-indigo-400 text-xl px-5 py-4 font-bold bg-indigo-500 text-white w-[80vw]">Take
         photo</button>
-    </div>
+    </div>-->
     <input type="file" ref="fileInput" @change="upload" id="uploadImage" accept="image/*" hidden>
     <div class="h-40"></div>
   </div>

@@ -19,9 +19,20 @@ const url = useUrlStore()
 const data = ref("wait...")
 
 const formData = new FormData();
-  formData.append('file', image.data);
 
-  console.log("hello")
+const base64Data = image.data
+const fileData = base64Data.replace(/^data:\w+\/\w+;base64,/, '');
+const byteString = atob(fileData);
+const arrayBuffer = new ArrayBuffer(byteString.length);
+const uint8Array = new Uint8Array(arrayBuffer);
+for (let i = 0; i < byteString.length; i++) {
+  uint8Array[i] = byteString.charCodeAt(i);
+}
+const file = new File([uint8Array], 'fileName.jpg', { type: "image/jpg" });
+
+formData.append('file', file);
+
+console.log("hello")
 
 axios.post(`${url.data}/classify-image/`, formData, {
   headers: {
