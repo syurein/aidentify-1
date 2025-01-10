@@ -7,7 +7,7 @@ export const useUrlStore = defineStore('url', () => {
   //https://cool-emu-learning.ngrok-free.app
 
   const type = {
-    "w": "https://wired-kitten-adequately.ngrok-free.app",
+    "w": "https://rein0421-aidentify.hf.space",
     "c": "https://cool-emu-learning.ngrok-free.app",
     "p": "https://powerful-centrally-chimp.ngrok-free.app"
   }
